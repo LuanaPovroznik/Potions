@@ -21,7 +21,7 @@
                     <label for="employeeLevel">Permissão de administrador:</label><br>
                     <input type="radio" name="employeeLevel" value="Sim"> Sim<br>
                     <input type="radio" name="employeeLevel" value="Não"> Não<br><br>
-                    <label for="employeeCPF">CPF:</label><br>
+                    <label for="employeeCPF">CPF <span style="font-style: italic">(apenas números)</span>:</label><br>
                     <input type="text" name="employeeCPF" onfocusout="checkCPF()" id="employeeCPF"><br>
                     <script>
                         function checkCPF(){
