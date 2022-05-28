@@ -31,7 +31,6 @@
             </div>
         </div>
     </body>
-<<<<<<< HEAD
 </html>
 
 <?php
