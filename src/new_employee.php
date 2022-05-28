@@ -82,7 +82,7 @@
         if (mysqli_query($con, $sql)) {
             echo "Cadastrado com sucesso.";
         } else {
-            "Erro ao cadastrar";
+            echo "Erro ao cadastrar";
         }
     }
 ?>
