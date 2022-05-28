@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Maio-2022 às 18:14
+-- Tempo de geração: 28-Maio-2022 às 18:51
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 7.4.29
 
@@ -31,7 +31,8 @@ CREATE TABLE `cliente` (
   `id` int(5) NOT NULL,
   `nome` varchar(80) NOT NULL,
   `login` varchar(60) NOT NULL,
-  `password` varchar(120) NOT NULL
+  `password` varchar(120) NOT NULL,
+  `cpf` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -123,9 +124,43 @@ ALTER TABLE `tipo`
 --
 ALTER TABLE `venda`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `funcionario` (`funcionario`),
   ADD KEY `cliente` (`cliente`),
+  ADD KEY `funcionario` (`funcionario`),
   ADD KEY `produto` (`produto`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `funcionario`
+--
+ALTER TABLE `funcionario`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `potion`
+--
+ALTER TABLE `potion`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `tipo`
+--
+ALTER TABLE `tipo`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `venda`
+--
+ALTER TABLE `venda`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para despejos de tabelas
@@ -141,8 +176,8 @@ ALTER TABLE `potion`
 -- Limitadores para a tabela `venda`
 --
 ALTER TABLE `venda`
-  ADD CONSTRAINT `venda_ibfk_1` FOREIGN KEY (`funcionario`) REFERENCES `funcionario` (`id`),
-  ADD CONSTRAINT `venda_ibfk_2` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`id`),
+  ADD CONSTRAINT `venda_ibfk_1` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`id`),
+  ADD CONSTRAINT `venda_ibfk_2` FOREIGN KEY (`funcionario`) REFERENCES `funcionario` (`id`),
   ADD CONSTRAINT `venda_ibfk_3` FOREIGN KEY (`produto`) REFERENCES `potion` (`id`);
 COMMIT;
 
