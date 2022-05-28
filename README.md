@@ -1,1 +1,1 @@
-# Trabalho2Bimestre
+# Trabalho 2° bimestre - Loja de poções - Professor: Lucas Filipak
