@@ -24,7 +24,7 @@
                     <input type="text" name="employeeCPF" onfocusout="checkCPF()" id="employeeCPF"><br>
                     <script>
                         function checkCPF(){
-                            fetch("http://localhost/Trabalho2Bimestre/src/check_cpf.php", {
+                            fetch("http://localhost/Trabalho2Bimestre/api/check_cpf.php", {
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",

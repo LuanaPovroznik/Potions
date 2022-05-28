@@ -1,5 +1,6 @@
 <?php
-include 'config.php';
+    include 'verification.php';
+    include 'config.php';
 ?>
     <!doctype html>
     <html lang="pt-BR">

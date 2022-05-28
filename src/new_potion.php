@@ -1,4 +1,5 @@
 <?php
+    include 'verification.php';
     include 'config.php';
 ?>
 <!doctype html>

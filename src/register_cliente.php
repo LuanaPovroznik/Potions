@@ -41,7 +41,7 @@
         <input type="text" placeholder="Username" onkeyup="checkUser()" name="login" id= "login" value="<?php echo @$_POST['login']; ?>" required>
         <script>
             function checkUser() {
-                fetch("http://localhost/projects/potions/Potions/src/check_user.php", {
+                fetch("http://localhost/projects/potions/Potions/api/check_user.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
@@ -59,7 +59,7 @@
         <input type="text" onfocusout="CalculaCPF()" placeholder="CPF" name="cpf" id="cpf" value="<?php echo @$_POST['cpf']; ?>" required><br>
         <script>
             function CalculaCPF() {
-                fetch("http://localhost/projects/potions/Potions/src/check_cpf.php", {
+                fetch("http://localhost/projects/potions/Potions/api/check_cpf.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
