@@ -33,7 +33,7 @@ if(@$_REQUEST['addButton'] == "Cadastrar") {
 
 
     $sql = "INSERT INTO tipo (nome, efeito) 
-                    VALUES ('$potionTypeName', '$potionTypeName')";
+                    VALUES ('$potionTypeName', '$potionTypeEffect')";
 
 
     if (mysqli_query($con, $sql)) {

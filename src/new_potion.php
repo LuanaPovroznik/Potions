@@ -54,6 +54,8 @@ if(@$_REQUEST['addButton'] == "Cadastrar") {
 
     if (mysqli_query($con, $sql)) {
         echo "Cadastrado com sucesso.";
+        header('Location: new_potion.php');
+        die();
     } else {
         echo "Erro ao cadastrar";
     }
