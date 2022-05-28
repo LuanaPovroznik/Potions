@@ -1,0 +1,41 @@
+body {
+    margin: 0 auto;
+}
+ol {
+    list-style-type: none;
+    order: initial;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: purple;
+}
+
+li {
+    float: left;
+}
+
+li span{
+    margin-left: 15px;
+    color: #9fa91f;
+    font-weight: bold;
+}
+
+li p {
+    color: grey;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: mediumpurple;
+}
+
+.active {
+    background-color: rebeccapurple;
+}
