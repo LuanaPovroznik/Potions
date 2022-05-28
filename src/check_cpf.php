@@ -26,14 +26,14 @@ $cpf = $_POST['cpf'];
         if (strlen($RecebeCPF)!=11)
         {
             $retorno = "cpf invalido"; 
-            echo "<h1>&Eacute; obrigat&oacute;rio o CPF com 11 d&iacute;gitos</h1>";
+            echo "Obrigatório CPF com 11 dígitos.";
         }
             else
         if ($RecebeCPF=="00000000000")
         {
             $then;
             $retorno = "cpf invalido"; 
-            echo "<h1>CPF Inv�lido</h1>";
+            echo "CPF Inválido.";
         }
             else
         {
@@ -90,19 +90,19 @@ $cpf = $_POST['cpf'];
 
             if ($resultado2==$Numero[11])
             {
-                echo "<h1>CPF V�lido</h1>";
+                echo "CPF Válido.";
             }
                 else
             {
                 $retorno = "cpf invalido"; 
-                echo "<h1>CPF Inv�lido</h1>";
+                echo "CPF Inválido.";
             } 
 
             }
             else
             {
             $retorno = "cpf invalido";  
-            echo "<h1>CPF Inv�lido</h1>";
+            echo "CPF Inválido.";
             } 
 
         } 
