@@ -1,6 +1,7 @@
 <?php
     include 'config.php';
     include 'navigation_bar.php';
+    echo $localUrl;
 ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -22,10 +23,10 @@
                     <input type="radio" name="employeeLevel" value="Sim"> Sim<br>
                     <input type="radio" name="employeeLevel" value="Não"> Não<br><br>
                     <label for="employeeCPF">CPF <span style="font-style: italic">(apenas números)</span>:</label><br>
-                    <input type="text" name="employeeCPF" onfocusout="checkCPF()" id="employeeCPF"><br>
+                    <input type="text" name="employeeCPF" onfocusout="checkCPF('<?php echo $localUrl; ?>')" id="employeeCPF"><br>
                     <script>
-                        function checkCPF(){
-                            fetch("http://localhost/Trabalho2Bimestre/api/check_cpf.php", {
+                        function checkCPF(url){
+                            fetch(`${url}/api/check_cpf.php`, {
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",

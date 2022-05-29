@@ -1,5 +1,5 @@
 <?php
-    include "config.php";
+    include "../src/config.php";
     $login = $_POST['login'];
     $sql = "SELECT * FROM cliente";
     $result = mysqli_query($con, $sql);

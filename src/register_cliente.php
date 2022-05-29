@@ -1,7 +1,9 @@
 <html>
 <head>
     <title>Cadastre-se</title>
-    <?php include ('config.php');  ?>
+    <?php include ('config.php'); 
+    include 'navigation_bar.php';
+    include 'host.php'; ?>
     <link href="css/register_style.css" rel="stylesheet">
 </head>
     <body>
@@ -38,10 +40,10 @@
 <div class="container">
     <h2>Cadastro <span>de Cliente</span></h2>
     <form action="register_cliente.php" method="post" name="user">
-        <input type="text" placeholder="Username" onkeyup="checkUser()" name="login" id= "login" value="<?php echo @$_POST['login']; ?>" required>
+        <input type="text" placeholder="Username" onkeyup="checkUser('<?php echo $localUrl; ?>')" name="login" id= "login" value="<?php echo @$_POST['login']; ?>" required>
         <script>
-            function checkUser() {
-                fetch("http://localhost/projects/potions/Potions/api/check_user.php", {
+            function checkUser(url) {
+                fetch(`${url}/api/check_user.php`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
@@ -56,10 +58,10 @@
         </script>
         <p id="result"></p>
         <input type="text" placeholder="Nome" name="nome" value="<?php echo @$_POST['nome']; ?>" required><br>
-        <input type="text" onfocusout="CalculaCPF()" placeholder="CPF" name="cpf" id="cpf" value="<?php echo @$_POST['cpf']; ?>" required><br>
+        <input type="text" onfocusout="CalculaCPF('<?php echo $localUrl; ?>')" placeholder="CPF" name="cpf" id="cpf" value="<?php echo @$_POST['cpf']; ?>" required><br>
         <script>
-            function CalculaCPF() {
-                fetch("http://localhost/projects/potions/Potions/api/check_cpf.php", {
+            function CalculaCPF(url) {
+                fetch(`${url}/api/check_cpf.php`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
@@ -87,17 +89,17 @@
                 }
             }
             function letRegisterCPF(){
-                userAvaiable = document.getElementById("result_cpf").innerHTML.valueOf();
-                if(userAvaiable == "cpf invalido"){
-                    document.getElementById("buttonGravar").style.backgroundColor="grey";
-                    document.user.button.disabled=true
+                cpfAvaiable = document.getElementById("result_cpf").innerHTML.valueOf();
+                if(cpfAvaiable == "CPF Inválido." || cpfAvaiable == "Obrigatório CPF com 11 dígitos."){
+                document.querySelector('#addButton').disabled = true;
+                document.getElementById("result_cpf").style.color="red";
                 } else {
-                    document.getElementById("buttonGravar").style.backgroundColor="#008CBA";
-                    document.user.button.disabled=false
+                    document.getElementById("result_cpf").style.color="green";
+                    document.querySelector('#addButton').disabled = false;
+                    }
                 }
-            }
         </script>
-        <input type="submit" value="Gravar" name="button" id="buttonGravar" class="button">
+        <input type="submit" value="Gravar" name="addButton" id="addButton" class="button">
         <a href="login_cliente.php">
             <button type="button" class="button">Já tenho uma conta</button>
         </a>

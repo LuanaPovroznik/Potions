@@ -1,3 +1,4 @@
+
 <!doctype html>
 <?php
 include 'config.php';
@@ -10,7 +11,7 @@ include 'verification.php';
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Potions</title>
 </head>
 <body>
@@ -83,46 +84,46 @@ if($result != null){
             while(@$resultTipoNome = mysqli_fetch_array($getTipoNome)){
                 @$tipoNome = @$resultTipoNome['nome'];
             }
+
             echo "<p class=\"cardCategory\"> <span>Tipo da poção:</span> ".$tipoNome."</p>";
+
+            // BOTÕES APENAS PARA ADMIN
+            @$getUserAdmin = mysqli_query($con, "SELECT * FROM funcionario WHERE id = $userId");
+            while(@$resultUserAdmin = mysqli_fetch_array($getUserAdmin)){
+                @$userIsAdmin = @$resultUserAdmin['isAdm'];
+            }
+            if($userIsAdmin == 1){
+                echo "<button type=\"submit\" name=\"botao\" value=\"deletar potion\" class=\"button\">deletar poção</button>";
+                echo "<a><button type=\"submit\" name=\"botao\" value=\"gerenciar anúncio\" class=\"button\">gerenciar anúncio</button></a>";
+            }
             echo "</div>";
             echo "</div>";
             echo "</div>";
             echo "</form>";
     }
-    echo "<button type=\"submit\" name=\"botao\" id=\"comprarModal\"value=\"comprar potion\" class=\"button\">comprar poção</button>"; 
-    echo "</div>";       
+    echo "</div>";
 } else {
     echo "There is no potions.";
     header("Refresh:7");
 }
+
+if(@$_REQUEST['botao'] == "deletar anúncio"){
+    @$postToDelete = $_POST["postId"];
+    $deletePost = "DELETE FROM anuncios WHERE id = $postToDelete";
+
+    if(mysqli_query($con, $deletePost)){
+        echo "Anúncio deletado com sucesso.";
+        header("Refresh: 3");
+    } else {
+        echo "Erro ao deletar anúncio.";
+        header("Refresh: 3");
+    }
+}
+
+if(@$_REQUEST['botao'] == "gerenciar anúncio"){
+    @$postToUpdate = $_POST["postId"];
+    echo "<script>top.location.href=\"update_post.php?id=$postToUpdate\"</script>";
+}
 ?>
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
-    </div>
-</div>
-<script>
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("comprarModal");
-    var span = document.getElementsByClassName("close")[0];
-
-
-    btn.onclick = function() {
-    modal.style.display = "block";
-    }
-
-
-    span.onclick = function() {
-    modal.style.display = "none";
-    }
-
-
-    window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-    }
-</script>
 </body>
 </html>

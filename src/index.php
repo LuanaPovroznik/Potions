@@ -1,10 +1,11 @@
 <html>
     <body>
-        <div>
-            <img src="img/potion-one.gif" alt="yoast seo" height="100" width="120"/>
-            <a href="register_cliente.php"><button type="button" class="button">Seja um cliente!</button></a>
-            <a href="login_cliente.php"><button type="button" class="button">Entrar</button></a>
-            <a href="register_cliente.php"><button type="button" class="button">Entre como funcionario</button></a>
-        </div>
+    <?php
+        include 'navigation_bar.php';
+    ?>
+    <div style="display: flex; justify-content: center;">
+        <img style="float: left;" src="img/potion.jpg" alt="potion craft" height="680" width="1368"/>
+    </div>
+    
     </body>
 </html>

@@ -41,10 +41,10 @@
 			<form class="user" action=# method=post>
 				<input type="text" aria-describedby="emailHelp" placeholder="Enter username" name="login"><br><br>
 				<input type="password" id="password" placeholder="Password" name="password"> <br><br>
-				<a href="register_cliente.php"><button type="button" class="button">Funcionario!</button></a>
+				<a href="new_employee.php"><button type="button" class="button">Funcionario!</button></a>
 				<input type="submit" name="button" value="Login" class="button"><br>
 			</form>
-			<a href="posts_page_logged_out.php"><button type="button" class="button">Visualizar produtos</button></a>
+			<a href="menu.php"><button type="button" class="button">Visualizar produtos</button></a>
 		</div>
 	</body>
 </html>
