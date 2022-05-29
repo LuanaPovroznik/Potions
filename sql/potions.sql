@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Maio-2022 às 18:51
+-- Tempo de geração: 29-Maio-2022 às 19:26
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 7.4.29
 
@@ -35,6 +35,14 @@ CREATE TABLE `cliente` (
   `cpf` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `nome`, `login`, `password`, `cpf`) VALUES
+(1, 'luana', 'luana', '202cb962ac59075b964b07152d234b70', '000.000.22-00'),
+(2, 'matheus', 'matheus', '202cb962ac59075b964b07152d234b70', '00000.0000');
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +58,14 @@ CREATE TABLE `funcionario` (
   `password` varchar(120) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `funcionario`
+--
+
+INSERT INTO `funcionario` (`id`, `isAdm`, `nome`, `cpf`, `login`, `password`) VALUES
+(1, 1, 'Luana', '80341811025', 'luana.povroznik', '202cb962ac59075b964b07152d234b70'),
+(2, 1, 'luana', '803.418.110-25', 'luana', '202cb962ac59075b964b07152d234b70');
+
 -- --------------------------------------------------------
 
 --
@@ -63,6 +79,14 @@ CREATE TABLE `potion` (
   `tipo` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `potion`
+--
+
+INSERT INTO `potion` (`id`, `nome`, `preco`, `tipo`) VALUES
+(1, 'Sucy Speciality', '200.00', 1),
+(2, 'Orc errante', '100.00', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -74,6 +98,13 @@ CREATE TABLE `tipo` (
   `nome` varchar(60) NOT NULL,
   `efeito` varchar(180) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `tipo`
+--
+
+INSERT INTO `tipo` (`id`, `nome`, `efeito`) VALUES
+(1, 'Health Potion', 'A consumable item that heals a large amount of HP.');
 
 -- --------------------------------------------------------
 
@@ -87,8 +118,18 @@ CREATE TABLE `venda` (
   `total` varchar(20) NOT NULL,
   `produto` int(5) NOT NULL,
   `cliente` int(5) NOT NULL,
-  `funcionario` int(5) NOT NULL
+  `pagamento` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `venda`
+--
+
+INSERT INTO `venda` (`id`, `data`, `total`, `produto`, `cliente`, `pagamento`) VALUES
+(1, '2029-05-22', '100.00', 1, 1, 'boleto'),
+(2, '2029-05-22', '100.00', 1, 1, 'cartao'),
+(3, '2029-05-22', '200.00', 1, 1, 'boleto'),
+(4, '2029-05-22', '100.00', 2, 1, 'boleto');
 
 --
 -- Índices para tabelas despejadas
@@ -125,7 +166,6 @@ ALTER TABLE `tipo`
 ALTER TABLE `venda`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cliente` (`cliente`),
-  ADD KEY `funcionario` (`funcionario`),
   ADD KEY `produto` (`produto`);
 
 --
@@ -136,31 +176,31 @@ ALTER TABLE `venda`
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `potion`
 --
 ALTER TABLE `potion`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `tipo`
 --
 ALTER TABLE `tipo`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `venda`
 --
 ALTER TABLE `venda`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restrições para despejos de tabelas
@@ -177,7 +217,6 @@ ALTER TABLE `potion`
 --
 ALTER TABLE `venda`
   ADD CONSTRAINT `venda_ibfk_1` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`id`),
-  ADD CONSTRAINT `venda_ibfk_2` FOREIGN KEY (`funcionario`) REFERENCES `funcionario` (`id`),
   ADD CONSTRAINT `venda_ibfk_3` FOREIGN KEY (`produto`) REFERENCES `potion` (`id`);
 COMMIT;
 
