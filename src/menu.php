@@ -67,7 +67,7 @@ $result = mysqli_query($con, $sql);
 if($result != null){
     echo "<div class=\"row\" id=\"myProducts\">";
     while($row = mysqli_fetch_array($result)){
-            echo "<form action=\"\" method=\"POST\">";
+            echo "<form action=\"#\" method=\"POST\">";
             echo "<div class=\"column\">";
             $potionId = $row['id'];
             echo "<input type=\"hidden\" value=\"$potionId\" name=\"potionId\">";
@@ -83,11 +83,12 @@ if($result != null){
             while(@$resultTipoNome = mysqli_fetch_array($getTipoNome)){
                 @$tipoNome = @$resultTipoNome['nome'];
             }
+
             echo "<p class=\"cardCategory\"> <span>Tipo da poção:</span> ".$tipoNome."</p>";
             echo "</div>";
             echo "</div>";
             echo "</div>";
-            echo "<button type=\"submit\" name=\"botao\" id=\"comprarModal\"value=\"comprar potion\" class=\"button\">comprar poção</button>";
+            echo "<button type=\"button\" onclick='openModal()' name=\"botao\" id=\"comprarModal\"value=\"comprar potion\" class=\"button\">comprar poção</button>";
             echo "</form>";
     }
     echo "</div>";       
