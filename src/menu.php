@@ -87,9 +87,9 @@ if($result != null){
             echo "</div>";
             echo "</div>";
             echo "</div>";
+            echo "<button type=\"submit\" name=\"botao\" id=\"comprarModal\"value=\"comprar potion\" class=\"button\">comprar poção</button>";
             echo "</form>";
     }
-    echo "<button type=\"submit\" name=\"botao\" id=\"comprarModal\"value=\"comprar potion\" class=\"button\">comprar poção</button>"; 
     echo "</div>";       
 } else {
     echo "There is no potions.";

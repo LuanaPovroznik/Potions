@@ -1,7 +1,7 @@
 <?php
     include 'config.php';
     include 'navigation_bar.php';
-    echo $localUrl;
+    include 'host.php';
 ?>
 <!doctype html>
 <html lang="pt-BR">
