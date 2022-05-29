@@ -88,7 +88,7 @@ if($result != null){
             echo "</div>";
             echo "</div>";
             echo "</div>";
-            echo "<button type=\"button\" onclick='openModal()' name=\"botao\" id=\"comprarModal\"value=\"comprar potion\" class=\"button\">comprar poção</button>";
+            echo "<button type=\"submit\" name=\"botao\" id=\"comprar\"value=\"comprar potion\" class=\"button\">comprar poção</button>";
             echo "</form>";
     }
     echo "</div>";       
@@ -96,34 +96,10 @@ if($result != null){
     echo "There is no potions.";
     header("Refresh:7");
 }
+if(@$_REQUEST['botao'] == "comprar potion"){
+  @$potionId = $_POST["potionId"];
+  echo "<script>top.location.href=\"venda.php?id=$potionId\"</script>";
+}
 ?>
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
-    </div>
-</div>
-<script>
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("comprarModal");
-    var span = document.getElementsByClassName("close")[0];
-
-
-    btn.onclick = function() {
-    modal.style.display = "block";
-    }
-
-
-    span.onclick = function() {
-    modal.style.display = "none";
-    }
-
-
-    window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-    }
-</script>
 </body>
 </html>
