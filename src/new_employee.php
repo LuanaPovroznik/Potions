@@ -1,7 +1,7 @@
 <?php
     include 'config.php';
-    include 'navigation_bar.php';
     include 'host.php';
+    include 'logged_user_nav_bar.php';
 ?>
 <!doctype html>
 <html lang="pt-BR">

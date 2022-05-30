@@ -1,8 +1,8 @@
 <!doctype html>
 <?php
 include 'config.php';
-include 'navigation_bar.php';
 include 'verification.php';
+include 'logged_user_nav_bar.php';
 ?>
 <html lang="pt-BR">
 <head>

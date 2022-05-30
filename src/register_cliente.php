@@ -4,7 +4,7 @@
     <?php include ('config.php'); 
     include 'navigation_bar.php';
     include 'host.php'; ?>
-    <link href="css/register_style.css" rel="stylesheet">
+<!--    <link href="css/register_style.css" rel="stylesheet">-->
 </head>
     <body>
     <?php
@@ -13,7 +13,7 @@
         $password = md5($_POST['password']);     
 
         if (!$_REQUEST['id']){
-            $insere = "INSERT into cliente (nome, login, password, cpf) VALUES ('{$_POST['nome']}', '{$_POST['login']}', '$password',  '$cpf'";
+            $insere = "INSERT into cliente (nome, login, password, cpf) VALUES ('{$_POST['nome']}', '{$_POST['login']}', '$password',  '{$_POST['cpf']}'";
             $result_insere = mysqli_query($con, $insere);
             if ($result_insere){
                 echo "<script>alert('Cadastrado com sucesso!'); top.location.href='login_cliente.php';</script>";

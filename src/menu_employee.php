@@ -1,9 +1,9 @@
 
 <!doctype html>
 <?php
-include 'config.php';
-include 'navigation_bar.php';
-include 'verification.php';
+    include 'config.php';
+    include 'verification.php';
+    include 'logged_user_nav_bar.php';
 ?>
 <html lang="pt-BR">
 <head>
@@ -22,11 +22,11 @@ include 'verification.php';
     </li>
 </ul>
 <?php
-@$userLogin = $_SESSION['login'];
-@$userId = $_SESSION['id'];
-if(!isset($_SESSION['login'])){
-    echo "<script>top.location.href='index.php';</script>";
-}
+    @$userLogin = $_SESSION['login'];
+    @$userId = $_SESSION['id'];
+    if(!isset($_SESSION['login'])){
+        echo "<script>top.location.href='index.php';</script>";
+    }
 
 echo "<script>
             function myFunctionCateg() {
