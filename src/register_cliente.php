@@ -11,43 +11,42 @@
     $id = @$_REQUEST['id'];
     if (isset($_POST['submit'])){
         $password = md5($_POST['password']);  
-        @$image_name = $_FILES['image']['name'];
-        @$image_size = $_FILES['image']['size'];
-        @$image_tmp_name = $_FILES['image']['tmp_name'];
-        @$image_folder = "uploaded_img/".@$_POST['image'];
+        $image_name = $_FILES['avatar']['name'];
+        $image_size = $_FILES['avatar']['size'];
+        $image_tmp_name = $_FILES['avatar']['tmp_name'];
+        $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+        $image_folder = "uploaded_img/".$_POST['nome'].'.'.$extension;
         if (!$_REQUEST['id']){
-            $insere = "INSERT into cliente (nome, login, password, cpf, avatar) VALUES ('{$_POST['nome']}', '{$_POST['login']}', '$password',  '{$_POST['cpf']}', '{$_POST['image']}')";
+            $insere = "INSERT into cliente (nome, login, password, cpf, avatar) VALUES ('{$_POST['nome']}', '{$_POST['login']}', '$password',  '{$_POST['cpf']}', '$image_name')";
             $result_insere = mysqli_query($con, $insere);
-            if ($result_insere){
-                if (move_uploaded_file($image_tmp_name, $image_folder)) {
-                    echo "<script>alert('Foi! $image_tmp_name');</script>"; 
-                } else {
-                    echo "<script>alert('Não foi!');</script>"; 
-                }        
-                echo "<script>alert('Cadastrado com sucesso! $image_tmp_name'); top.location.href='login_cliente.php';</script>";                
+            move_uploaded_file($image_tmp_name, $image_folder);
+            echo "<script>alert('Cadastrado com sucesso!'); top.location.href='login_cliente.php';</script>";                
             } else {
                 echo "<h2> Nao consegui inserir!!!</h2>";
             }
-        } else {
-            $insere = "UPDATE user SET 
-                    nome = '{$_POST['isAdm']}'
+    } /*else {
+            $insere = "UPDATE cliente SET 
+                    nome = '{$_POST['nome']}'
                     , login = '{$_POST['login']}'
                     , password = '{$_POST['password']}'
                     , cpf = = '{$_POST['cpf']}'
+                    , avatar = = '{$_POST['avatar']}'
                     WHERE id = '{$_REQUEST['id']}'
                 ";
             $result_update = mysqli_query($con, $insere);
             if ($result_update) echo "<h2> Registro atualizado com sucesso!!!</h2>";
             else echo "<h2> Nao consegui atualizar!!!</h2>";
-        }
+    }*/
 
-        
+    if (@$_REQUEST['importar'] == "importar") {
+        @$file_name = $_FILES['avatar']['tmp_name'];
+        echo $file_name;
     }
     ?>
     <h2 style="text-align: center"><span>Potions</span></h2>
 <div class="container">
     <h2>Cadastro <span>de Cliente</span></h2>
-    <form action="register_cliente.php" method="post" name="user">
+    <form action="register_cliente.php" method="post" name="user" enctype="multipart/form-data">
         <input type="text" placeholder="Username" onkeyup="checkUser('<?php echo $localUrl; ?>')" name="login" id= "login" value="<?php echo @$_POST['login']; ?>" required>
         <script>
             function checkUser(url) {
@@ -85,7 +84,8 @@
         </script>
         <p id="result_cpf"></p>
         <input type="password" id="password" name="password" value="<?php echo @$_POST['password']; ?>" placeholder="Senha" required><br>
-        <input type="file" name="image" accept="image/jpg, image/jpeg, image/png">
+        <input type="file" name="avatar" id="avatar" accept="image/jpg, image/jpeg, image/png">
+        <input type="submit" value="importar" name="importar" id="importar" class="button">
         <script>
             function letRegister(){
                 userAvaiable = document.getElementById("result").innerHTML.valueOf();
