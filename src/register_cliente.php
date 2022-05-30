@@ -4,19 +4,27 @@
     <?php include ('config.php'); 
     include 'navigation_bar.php';
     include 'host.php'; ?>
-<!--    <link href="css/register_style.css" rel="stylesheet">-->
+    <link href="css/style.css" rel="stylesheet">
 </head>
     <body>
     <?php
     $id = @$_REQUEST['id'];
-    if (@$_REQUEST['button'] == "Gravar"){
-        $password = md5($_POST['password']);     
-
+    if (isset($_POST['submit'])){
+        $password = md5($_POST['password']);  
+        @$image_name = $_FILES['image']['name'];
+        @$image_size = $_FILES['image']['size'];
+        @$image_tmp_name = $_FILES['image']['tmp_name'];
+        @$image_folder = "uploaded_img/".@$_POST['image'];
         if (!$_REQUEST['id']){
-            $insere = "INSERT into cliente (nome, login, password, cpf) VALUES ('{$_POST['nome']}', '{$_POST['login']}', '$password',  '{$_POST['cpf']}'";
+            $insere = "INSERT into cliente (nome, login, password, cpf, avatar) VALUES ('{$_POST['nome']}', '{$_POST['login']}', '$password',  '{$_POST['cpf']}', '{$_POST['image']}')";
             $result_insere = mysqli_query($con, $insere);
             if ($result_insere){
-                echo "<script>alert('Cadastrado com sucesso!'); top.location.href='login_cliente.php';</script>";
+                if (move_uploaded_file($image_tmp_name, $image_folder)) {
+                    echo "<script>alert('Foi! $image_tmp_name');</script>"; 
+                } else {
+                    echo "<script>alert('Não foi!');</script>"; 
+                }        
+                echo "<script>alert('Cadastrado com sucesso! $image_tmp_name'); top.location.href='login_cliente.php';</script>";                
             } else {
                 echo "<h2> Nao consegui inserir!!!</h2>";
             }
@@ -77,6 +85,7 @@
         </script>
         <p id="result_cpf"></p>
         <input type="password" id="password" name="password" value="<?php echo @$_POST['password']; ?>" placeholder="Senha" required><br>
+        <input type="file" name="image" accept="image/jpg, image/jpeg, image/png">
         <script>
             function letRegister(){
                 userAvaiable = document.getElementById("result").innerHTML.valueOf();
@@ -99,7 +108,7 @@
                     }
                 }
         </script>
-        <input type="submit" value="Gravar" name="addButton" id="addButton" class="button">
+        <input type="submit" value="Gravar" name="submit" id="addButton" class="button">
         <a href="login_cliente.php">
             <button type="button" class="button">Já tenho uma conta</button>
         </a>

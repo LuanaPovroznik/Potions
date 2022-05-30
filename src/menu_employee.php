@@ -15,6 +15,7 @@
     <title>Potions</title>
 </head>
 <body>
+<a href="new_employee.php"><button type="button" class="button">Cadastrar novo funcionario!</button></a>
 <ul>
     <li style="float: right; padding-top: 12px">
         <input type="text" id="myFilter" class="form-control" onkeyup="myFunctionCateg()" placeholder="Procure pela categoria">
@@ -71,7 +72,6 @@ if($result != null){
             echo "<form action=\"\" method=\"POST\">";
             echo "<div class=\"column\">";
             $potionId = $row['id'];
-            echo "<input type=\"hidden\" value=\"$potionId\" name=\"potionId\">";
             echo "<div class=\"card\">";
             echo "<div class=\"upper-line\">";
             echo "</div>";
@@ -93,8 +93,8 @@ if($result != null){
                 @$userIsAdmin = @$resultUserAdmin['isAdm'];
             }
             if($userIsAdmin == 1){
-                echo "<button type=\"submit\" name=\"botao\" value=\"deletar potion\" class=\"button\">deletar poção</button>";
-                echo "<a><button type=\"submit\" name=\"botao\" value=\"gerenciar anúncio\" class=\"button\">gerenciar anúncio</button></a>";
+                echo "<button type=\"submit\" name=\"botao\" value=\"deletar poção\" class=\"button\">deletar poção</button>";
+                echo "<a><button type=\"submit\" name=\"botao\" value=\"gerenciar potion\" class=\"button\">gerenciar poção</button></a>";
             }
             echo "</div>";
             echo "</div>";
@@ -107,21 +107,24 @@ if($result != null){
     header("Refresh:7");
 }
 
-if(@$_REQUEST['botao'] == "deletar anúncio"){
-    @$postToDelete = $_POST["postId"];
-    $deletePost = "DELETE FROM anuncios WHERE id = $postToDelete";
-
-    if(mysqli_query($con, $deletePost)){
-        echo "Anúncio deletado com sucesso.";
-        header("Refresh: 3");
+if(@$_REQUEST['botao'] == "deletar poção"){
+    @$potionToDelete = $_POST["potionId"];
+    
+    $deletePotion = "DELETE FROM potion WHERE id = $potionToDelete";
+    $result = mysqli_query($con, $deletePotion);
+    if ($result){
+      echo @$potionToDelete;
+      echo "Poção deletada com sucesso.";
+      header("Refresh: 3");
     } else {
-        echo "Erro ao deletar anúncio.";
-        header("Refresh: 3");
+      echo @$potionToDelete;
+      echo "Erro ao deletar poção.";
+      header("Refresh: 3");
     }
 }
 
-if(@$_REQUEST['botao'] == "gerenciar anúncio"){
-    @$postToUpdate = $_POST["postId"];
+if(@$_REQUEST['botao'] == "gerenciar potion"){
+    @$postToUpdate = $_POST["potionId"];
     echo "<script>top.location.href=\"update_post.php?id=$postToUpdate\"</script>";
 }
 ?>
