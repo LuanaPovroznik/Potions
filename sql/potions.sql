@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Maio-2022 às 19:26
+-- Tempo de geração: 01-Jun-2022 às 00:58
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 7.4.29
 
@@ -32,16 +32,20 @@ CREATE TABLE `cliente` (
   `nome` varchar(80) NOT NULL,
   `login` varchar(60) NOT NULL,
   `password` varchar(120) NOT NULL,
-  `cpf` varchar(25) NOT NULL
+  `cpf` varchar(25) NOT NULL,
+  `avatar` varchar(180) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `cliente`
 --
 
-INSERT INTO `cliente` (`id`, `nome`, `login`, `password`, `cpf`) VALUES
-(1, 'luana', 'luana', '202cb962ac59075b964b07152d234b70', '000.000.22-00'),
-(2, 'matheus', 'matheus', '202cb962ac59075b964b07152d234b70', '00000.0000');
+INSERT INTO `cliente` (`id`, `nome`, `login`, `password`, `cpf`, `avatar`) VALUES
+(1, 'batata', 'luana', '202cb962ac59075b964b07152d234b70', '031.146.540-45', 'batata.'),
+(2, 'batata', 'teste', '202cb962ac59075b964b07152d234b70', '031.146.540-45', 'batata.png'),
+(3, 'batata', 'polenta', '202cb962ac59075b964b07152d234b70', '031.146.540-45', 'batata.png'),
+(4, 'luana', 'luana.povroznik', '202cb962ac59075b964b07152d234b70', '031.146.540-45', 'luana.png'),
+(5, 'chuinquinha', 'guilherminho', '202cb962ac59075b964b07152d234b70', '031.146.540-45', 'chuinquinha.jpg');
 
 -- --------------------------------------------------------
 
@@ -64,7 +68,8 @@ CREATE TABLE `funcionario` (
 
 INSERT INTO `funcionario` (`id`, `isAdm`, `nome`, `cpf`, `login`, `password`) VALUES
 (1, 1, 'Luana', '80341811025', 'luana.povroznik', '202cb962ac59075b964b07152d234b70'),
-(2, 1, 'luana', '803.418.110-25', 'luana', '202cb962ac59075b964b07152d234b70');
+(2, 1, 'luana', '803.418.110-25', 'luana', '202cb962ac59075b964b07152d234b70'),
+(3, 1, 'luana', '803.418.110-25', 'luana', '202cb962ac59075b964b07152d234b70');
 
 -- --------------------------------------------------------
 
@@ -126,10 +131,15 @@ CREATE TABLE `venda` (
 --
 
 INSERT INTO `venda` (`id`, `data`, `total`, `produto`, `cliente`, `pagamento`) VALUES
-(1, '2029-05-22', '100.00', 1, 1, 'boleto'),
-(2, '2029-05-22', '100.00', 1, 1, 'cartao'),
-(3, '2029-05-22', '200.00', 1, 1, 'boleto'),
-(4, '2029-05-22', '100.00', 2, 1, 'boleto');
+(6, '2031-05-22', '200.00', 1, 1, 'boleto'),
+(7, '2031-05-22', '100.00', 2, 1, 'boleto'),
+(8, '2031-05-22', '200.00', 1, 1, 'cartao'),
+(9, '2031-05-22', '100.00', 2, 3, 'cartao'),
+(10, '2031-05-22', '200.00', 1, 3, 'boleto'),
+(11, '2031-05-22', '200.00', 1, 4, 'boleto'),
+(12, '2031-05-22', '100.00', 2, 4, 'cartao'),
+(13, '2031-05-22', '200.00', 1, 4, 'cartao'),
+(14, '2031-05-22', '100.00', 2, 5, 'boleto');
 
 --
 -- Índices para tabelas despejadas
@@ -176,13 +186,13 @@ ALTER TABLE `venda`
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `potion`
@@ -200,7 +210,7 @@ ALTER TABLE `tipo`
 -- AUTO_INCREMENT de tabela `venda`
 --
 ALTER TABLE `venda`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restrições para despejos de tabelas
