@@ -15,9 +15,10 @@
         $image_size = $_FILES['avatar']['size'];
         $image_tmp_name = $_FILES['avatar']['tmp_name'];
         $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-        $image_folder = "uploaded_img/".$_POST['nome'].'.'.$extension;
+        $new_name = $_POST['nome'].'.'.$extension;       
+        $image_folder = "uploaded_img/".$new_name;
         if (!$_REQUEST['id']){
-            $insere = "INSERT into cliente (nome, login, password, cpf, avatar) VALUES ('{$_POST['nome']}', '{$_POST['login']}', '$password',  '{$_POST['cpf']}', '$image_name')";
+            $insere = "INSERT into cliente (nome, login, password, cpf, avatar) VALUES ('{$_POST['nome']}', '{$_POST['login']}', '$password',  '{$_POST['cpf']}', '$new_name')";
             $result_insere = mysqli_query($con, $insere);
             move_uploaded_file($image_tmp_name, $image_folder);
             echo "<script>alert('Cadastrado com sucesso!'); top.location.href='login_cliente.php';</script>";                
