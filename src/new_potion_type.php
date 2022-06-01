@@ -1,6 +1,7 @@
 <?php
     include 'verification.php';
     include 'config.php';
+    include 'logged_user_nav_bar.php';
 ?>
     <!doctype html>
     <html lang="pt-BR">
