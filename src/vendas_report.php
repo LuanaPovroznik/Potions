@@ -17,7 +17,7 @@
             $vendas = $result->fetch_all(MYSQLI_ASSOC);
         }
         if (@$_REQUEST['botao'] == "Exportar arquivo"){
-            $myfile = fopen("vendas.txt", "a");
+            $myfile = fopen("relatorios/vendas.txt", "a");
             if(!empty($vendas)){
                 foreach($vendas as $venda) {
                     echo "<script> console.log(\" Entrei no foreach\")</script>";
