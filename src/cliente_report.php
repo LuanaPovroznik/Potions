@@ -10,26 +10,22 @@
 </head>
     <body>
         <?php        
-        $sql = "SELECT nome, preco, tipo FROM potion";
+        $sql = "SELECT nome, login, cpf FROM cliente";
         $result = mysqli_query($con, $sql);
-        $produtos = [];
+        $clientes = [];
         if ($result != null) {
-            $produtos = $result->fetch_all(MYSQLI_ASSOC);
+            $clientes = $result->fetch_all(MYSQLI_ASSOC);
         }
         if (@$_REQUEST['botao'] == "Exportar arquivo"){
-            $myfile = fopen("relatorios/produtos.txt", "a");
-            if(!empty($produtos)){
-                foreach($produtos as $produto) {
+            $myfile = fopen("relatorios/clientes.txt", "a");
+            if(!empty($clientes)){
+                foreach($clientes as $cliente) {
                     echo "<script> console.log(\" Entrei no foreach\")</script>";
-                    @$nome = $produto['nome'];
-                    @$preco = $produto['preco'];
-                    @$tipoId = $produto['tipo'];
-                    @$getTipoNome = mysqli_query($con, "SELECT nome FROM tipo WHERE id = $tipoId");
-                    while(@$resultTipoNome = mysqli_fetch_array($getTipoNome)){
-                        @$TipoNome = @$resultTipoNome['nome'];
-                    } 
+                    @$nome = $cliente['nome'];
+                    @$login = $cliente['login'];
+                    @$cpf = $cliente['cpf'];
                     echo "<script> console.log(\"2 Entrei no foreach\")</script>";
-                    $txt = "$nome $preco $TipoNome \n";
+                    $txt = "$nome $login $cpf \n";
                     fwrite($myfile, $txt); 
                 } 
             }
@@ -42,23 +38,16 @@
         <table id="tblUser">
             <thead>
                 <th>Nome</th>
-                <th>Preco</th>
-                <th>Tipo</th>
+                <th>Login</th>
+                <th>CPF</th>
             </thead>
             <tbody>
-                <?php if(!empty($produtos)) { ?>
-                    <?php foreach($produtos as $produto) { ?>
+                <?php if(!empty($clientes)) { ?>
+                    <?php foreach($clientes as $cliente) { ?>
                         <tr>
-                            <td><?php echo $produto['nome']; ?></td>
-                            <td><?php echo $produto['preco']; ?></td>
-                            <?php 
-                                @$tipoId = $produto['tipo'];
-                                @$getTipoNome = mysqli_query($con, "SELECT nome FROM tipo WHERE id = $tipoId");
-                                while(@$resultTipoNome = mysqli_fetch_array($getTipoNome)){
-                                    @$tipoNome = @$resultTipoNome['nome'];
-                                } 
-                            ?>
-                            <td><?php echo $tipoNome; ?></td>
+                            <td><?php echo $cliente['nome']; ?></td>
+                            <td><?php echo $cliente['login']; ?></td>
+                            <td><?php echo $cliente['cpf']; ?></td>
                         </tr>
                     <?php } ?>
                 <?php } ?>

@@ -2,7 +2,7 @@
 <head>
     <title>Relatório de Vendas</title>
     <?php include ('config.php'); 
-    include 'navigation_bar.php';
+    include 'logged_user_nav_bar.php';
     include 'host.php'; ?>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

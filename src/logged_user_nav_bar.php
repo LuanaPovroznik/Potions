@@ -23,6 +23,16 @@
         }
         echo "</div>";
         echo "</li>";
+        echo "<li class=\"dropdown\" style=\"float: right\">";
+        echo "<a href=\"javascript:void(0)\" class=\"dropbtn\">Relatórios</a>";
+        echo "<div class=\"dropdown-content\">";
+        if($_SESSION['isAdm'] == 1){
+            echo "<a href=\"cliente_report.php\">Clientes</a>";
+            echo "<a href=\"vendas_report.php\">Vendas</a>";
+            echo "<a href=\"produto_report.php\">Produtos</a>";
+        }
+        echo "</div>";
+        echo "</li>";
         echo "<li style=\"float: right\"><a href=\"index.php\">Inicial</a></li>";
         echo "</div>";
         echo "</ol>";
