@@ -25,23 +25,6 @@
             } else {
                 echo "<h2> Nao consegui inserir!!!</h2>";
             }
-    } /*else {
-            $insere = "UPDATE cliente SET 
-                    nome = '{$_POST['nome']}'
-                    , login = '{$_POST['login']}'
-                    , password = '{$_POST['password']}'
-                    , cpf = = '{$_POST['cpf']}'
-                    , avatar = = '{$_POST['avatar']}'
-                    WHERE id = '{$_REQUEST['id']}'
-                ";
-            $result_update = mysqli_query($con, $insere);
-            if ($result_update) echo "<h2> Registro atualizado com sucesso!!!</h2>";
-            else echo "<h2> Nao consegui atualizar!!!</h2>";
-    }*/
-
-    if (@$_REQUEST['importar'] == "importar") {
-        @$file_name = $_FILES['avatar']['tmp_name'];
-        echo $file_name;
     }
     ?>
     <h2 style="text-align: center"><span>Potions</span></h2>
@@ -86,7 +69,6 @@
         <p id="result_cpf"></p>
         <input type="password" id="password" name="password" value="<?php echo @$_POST['password']; ?>" placeholder="Senha" required><br>
         <input type="file" name="avatar" id="avatar" accept="image/jpg, image/jpeg, image/png">
-        <input type="submit" value="importar" name="importar" id="importar" class="button">
         <script>
             function letRegister(){
                 userAvaiable = document.getElementById("result").innerHTML.valueOf();
