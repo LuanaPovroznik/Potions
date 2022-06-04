@@ -27,8 +27,8 @@
             $this->SetFont('Times', '',12);
             $stmt = $db->query('SELECT nome, login, cpf FROM cliente');
             while($cliente = $stmt->fetch(PDO::FETCH_OBJ)){
-                $this->Cell(40,10,$cliente->nome,1,0,'C');
-                $this->Cell(30,10,$cliente->login,1,0,'C');
+                $this->Cell(80,10,$cliente->nome,1,0,'C');
+                $this->Cell(60,10,$cliente->login,1,0,'C');
                 $this->Cell(60,10,$cliente->cpf,1,0,'C');
                 $this->Ln();
             }

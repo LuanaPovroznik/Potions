@@ -7,7 +7,7 @@
     class myPDF extends FPDF{
         function header(){
             $this->SetFont('Arial', 'B', 14);
-            $this->Cell(276, 5, 'RELATORIO DE VENDAS', 0,0,'C');
+            $this->Cell(276, 5, 'RELATORIO DE PRODUTOS', 0,0,'C');
             $this->Ln(20);
         }
         function footer(){

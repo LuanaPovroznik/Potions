@@ -60,7 +60,7 @@
         </table>
         <form action="#" method="POST">
             <a href="vendas.txt" download><button value="Exportar arquivo" name="botao">Exportar arquivo</button></a>
-            <a href="vendas_pdf.php" target="_blank"><input type="button" value="Imprimir"/>
+            <a href="cliente_pdf.php" target="_blank"><input type="button" value="Imprimir"/>
         </form>
         <script>
             const myFunction = () => {
