@@ -18,6 +18,7 @@
         }
         function headerTable(){
             $this->SetFont('Times', 'B', 12);
+            $this->Cell(50,10,'',0,0,'C');
             $this->Cell(40,10,'Data',1,0,'C');
             $this->Cell(30,10,'Total',1,0,'C');
             $this->Cell(60,10,'Produto',1,0,'C');
@@ -28,6 +29,7 @@
             $this->SetFont('Times', '',12);
             $stmt = $db->query('SELECT data, total, produto, cliente FROM venda');
             while($venda = $stmt->fetch(PDO::FETCH_OBJ)){
+                $this->Cell(50,10,'',0,0,'C');
                 $this->Cell(40,10,$venda->data,1,0,'C');
                 $this->Cell(30,10,$venda->total,1,0,'C');
                 $this->Cell(60,10,$venda->produto,1,0,'C');
