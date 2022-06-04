@@ -1,13 +1,46 @@
 <html>
 <head>
-    <title>Relatório de Produtos Cadastrados</title>
+    <title>Relatório de Clientes Cadastrados</title>
+    <link rel="stylesheet" href="css/report_buttons.css">
     <?php include ('config.php'); 
     include 'logged_user_nav_bar.php';
     include 'host.php'; ?>
 </head>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    td {
+        height: 30px;
+    }
+    tr:hover{
+        background-color: #f9f9f9;
+    }
+    th, th:hover{
+        cursor: pointer;
+        height: 50px;
+    }
+</style>
     <body>
-        <?php        
-        $sql = "SELECT nome, login, cpf FROM cliente";
+        <?php
+        $quantidade = 10;
+        $pagina     = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
+        $inicio     = ($quantidade * $pagina) - $quantidade;
+
+        $sql = "SELECT nome, login, cpf FROM cliente ORDER BY nome ASC LIMIT $inicio, $quantidade";
         $result = mysqli_query($con, $sql);
         $clientes = [];
         if ($result != null) {
@@ -35,13 +68,14 @@
          id="myInput" 
          onkeyup="myFunction()" 
          placeholder="Procure pelo cliente" 
-         title="Filtra a tabela">
+         title="Filtra a tabela"
+         style="width: 50%; margin-left: 25%; margin-top: 5px">
        
-        <table id="myTable">
+        <table id="myTable" style="width: 100%; align-content: center; justify-content: center; text-align: center">
             <thead>
-                <th onclick="sortTable(0)">Nome</th>
-                <th onclick="sortTable(1)">Login</th>
-                <th onclick="sortTable(2)">CPF</th>
+                <th onclick="sortTable(0)">Nome  &#8645</th>
+                <th onclick="sortTable(1)">Login  &#8645</th>
+                <th onclick="sortTable(2)">CPF  &#8645</th>
             </thead>
             <tbody>
                 <?php if(!empty($clientes)) { ?>
@@ -55,12 +89,44 @@
                 <?php } ?>
             </tbody>
             <tfoot>
-                <p id="totalRegister"></p>
+                <p id="totalRegister" style="text-align: center"></p>
             </tfoot>
+            <?php
+                $sqlTotal   = "SELECT id FROM cliente";
+                $qrTotal    = mysqli_query($con, $sqlTotal);
+                $numTotal   = mysqli_num_rows($qrTotal);
+                $totalPagina= ceil($numTotal/$quantidade);
+                $exibir = 3;
+                $anterior  = (($pagina - 1) == 0) ? 1 : $pagina - 1;
+                $posterior = (($pagina+1) >= $totalPagina) ? $totalPagina : $pagina+1;
+            ?>
+            <div class="navegacao" style="text-align: center">
+                <?php
+                echo '<a href="?pagina=1" style=\'text-decoration: none; color: rebeccapurple\'>primeira</a> | ';
+                echo "<a href=\"?pagina=$anterior\" style='text-decoration: none; color: rebeccapurple'> &#11013 </a> | ";
+                ?>
+                <?php
+                for($i = $pagina-$exibir; $i <= $pagina-1; $i++){
+                    if($i > 0)
+                        echo '<a href="?pagina='.$i.'" style=\'text-decoration: none; color: rebeccapurple\'> '.$i.' </a>';
+                }
+
+                echo '<a href="?pagina='.$pagina.'" style=\'text-decoration: none; color: rebeccapurple\'><strong>'.$pagina.'</strong></a>';
+
+                for($i = $pagina+1; $i < $pagina+$exibir; $i++){
+                    if($i <= $totalPagina)
+                        echo '<a href="?pagina='.$i.'" style=\'text-decoration: none; color: rebeccapurple\'> '.$i.' </a>';
+                }
+                ?>
+                <?php
+                echo " | <a href=\"?pagina=$posterior\" style='text-decoration: none; color: rebeccapurple'> &#10145 </a> | ";
+                echo "  <a href=\"?pagina=$totalPagina\" style='text-decoration: none; color: rebeccapurple'>última</a>";
+                ?>
+            </div>
         </table>
-        <form action="#" method="POST">
-            <a href="vendas.txt" download><button value="Exportar arquivo" name="botao">Exportar arquivo</button></a>
-            <a href="cliente_pdf.php" target="_blank"><input type="button" value="Imprimir"/>
+        <form action="#" method="POST" style="width: 97%; align-content: center; justify-content: center">
+            <a href="vendas.txt" download><button value="Exportar arquivo" name="botao" class="exportButton" style="float: right; margin: 10px">Exportar arquivo</button></a>
+            <a href="cliente_pdf.php" target="_blank"><input type="button" value="Imprimir" class="printButton" style="float: right; margin: 10px"/>
         </form>
         <script>
             const myFunction = () => {
@@ -78,7 +144,8 @@
                 trs.forEach(setTrStyleDisplay)
             }
             var x = document.getElementById("myTable").rows.length;
-            document.getElementById("totalRegister").innerHTML = "Há "+x+" registros";
+            var textRegistro = (x-1) > 1 ? "registros" : "registro";
+            document.getElementById("totalRegister").innerHTML = "Mostrando "+(x-1)+" "+textRegistro+".";
             function sortTable(n) {
             var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
             table = document.getElementById("myTable");

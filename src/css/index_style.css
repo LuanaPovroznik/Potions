@@ -1,0 +1,13 @@
+body{
+    margin: 0 auto;
+}
+
+.container{
+    display: flex;
+    height: 86.2%;
+    justify-content: center;
+    background-image: url("../img/leakycauldron.jpg");
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+}
