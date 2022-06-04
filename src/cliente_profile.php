@@ -12,7 +12,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="css/register_style.css" rel="stylesheet">
     <title>Bem vindo</title>
 </head>
 <body>
@@ -38,10 +38,11 @@
                 echo "<h4><b> Senha: <input type=\"password\" name=\"password\" id=\"password\" maxlength=\"80\" required></b></h4>";
                 $cpf =$data['cpf'];
                 echo "<h4><b> CPF: <input type=\"text\" name=\"cpf\" id=\"inputCPF\" maxlength=\"80\" placeholder=\"$cpf\" value=\"$cpf\" disabled></b></h4>";
+                echo "<input type=\"submit\" name=\"botao\" id=\"update\" value=\"Update\" class=\"loginButton\"><br> ";
                 echo "</div>";
                 echo "</div>";
                 echo "</div>";
-                echo "<input type=\"submit\" name=\"botao\" id=\"update\" value=\"Update\" class=\"button\"><br> ";
+                
                 echo "</form>";
                     
                 echo "</div>";

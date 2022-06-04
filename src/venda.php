@@ -9,7 +9,8 @@ include 'logged_user_nav_bar.php';
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="css/register_style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/potion_page_style.css">
     <title>Potions</title>
 </head>
 <body>
@@ -24,16 +25,12 @@ include 'logged_user_nav_bar.php';
 
    
         if($result != null){
-            echo "<div class=\"row\">";
+            echo "<div class=\"form\">";
                     echo "<form action=\"\" method=\"POST\">";
-                    echo "<div class=\"column\">";
                     echo "<div class=\"card\">";
-                    echo "<div class=\"upper-line\">";
-                    echo "</div>";
-                    echo "<div class=\"container\">";
                     $potionId = $data['id'];
                     $nome =$data['nome'];
-                    echo "<h4><b> Nome: $nome </b></h4>";
+                    echo "<h4 class=\"inputForm\"><b> Nome: $nome </b></h4>";
                     $preco =$data['preco'];
                     echo "<p> <span>Total: </span>$preco</p>";
                     @$tipoId = $data['tipo'];
@@ -48,12 +45,10 @@ include 'logged_user_nav_bar.php';
                         @$efeitoPotion = @$resultEfeitoPotion['efeito'];
                     }
                     echo "<p> <span>Tipo: </span> ".$efeitoPotion."</p>";
-                    echo "<p\"> <span>Tipo de pagamento:</span></p>";
+                    echo "<p> <span>Tipo de pagamento:</span></p>";
                     echo "<input type=\"radio\" name=\"pagamento\" value=\"Boleto\">Boleto<br>";
                     echo "<input type=\"radio\" name=\"pagamento\" value=\"Cartao\">Cartão<br>";
-                    echo "<input type=\"submit\" name=\"botao\" id=\"finalizar\" value=\"Finalizar Compra\" class=\"button\"><br> ";
-                    echo "</div>";
-                    echo "</div>";
+                    echo "<input type=\"submit\" name=\"botao\" id=\"finalizar\" value=\"Finalizar Compra\" class=\"loginButton\"><br> ";
                     echo "</div>";
                     echo "</form>";
                 }
