@@ -35,3 +35,7 @@
     text-decoration: none;
     cursor: pointer;
   }
+  
+input#myInput { width: 220px; }
+table#myTable { width: 100%; }
+table#myTable th { text-align: left; padding: 20px 0 10px; }
