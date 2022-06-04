@@ -1,5 +1,4 @@
 <?php
-    include 'verification.php';
     include 'logged_user_nav_bar.php';
     include 'config.php';
 ?>
