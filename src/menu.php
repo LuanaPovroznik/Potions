@@ -9,14 +9,14 @@ include 'logged_user_nav_bar.php';
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/potion_page_style.css">
     <title>Potions</title>
 </head>
 <body>
 <ul>
-    <li style="float: right; padding-top: 12px">
-        <input type="text" id="myFilter" class="form-control" onkeyup="myFunctionCateg()" placeholder="Procure pela categoria">
-        <input type="text" id="myFilterPrec" class="form-control" onkeyup="myFunctionPrec()" placeholder="Procure por preço">
+    <li style="float: right; padding-top: 12px"  class="buttons">
+    <input type="text" id="myFilter" class="searchBar" onkeyup="myFunctionCateg()" placeholder="Procure pelo tipo">
+        <input type="text" id="myFilterPrec" class="searchBar" onkeyup="myFunctionPrec()" placeholder="Procure por preço">
     </li>
 </ul>
 <?php
@@ -75,7 +75,7 @@ if($result != null){
             echo "</div>";
             echo "<div class=\"container\">";
             echo "<h4><b><span>Nome:</span> ".$row['nome']."</b></h4>";
-            echo "<p> <span>Preco:</span> ".$row['preco']."</p>";
+            echo "<p class=\"cardPrice\"> <span>Preco:</span> ".$row['preco']."</p>";
 
             @$tipoId = $row['tipo'];
             @$getTipoNome = mysqli_query($con, "SELECT nome FROM tipo WHERE id = $tipoId");
@@ -84,10 +84,10 @@ if($result != null){
             }
 
             echo "<p class=\"cardCategory\"> <span>Tipo da poção:</span> ".$tipoNome."</p>";
-            echo "</div>";
-            echo "</div>";
-            echo "</div>";
             echo "<button type=\"submit\" name=\"botao\" id=\"comprar\"value=\"comprar potion\" class=\"button\">comprar poção</button>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
             echo "</form>";
     }
     echo "</div>";       

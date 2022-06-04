@@ -1,4 +1,3 @@
-
 <!doctype html>
 <?php
     include 'config.php';
@@ -10,15 +9,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/potion_page_style.css">
     <title>Potions</title>
 </head>
 <body>
-<a href="new_employee.php"><button type="button" class="button">Cadastrar novo funcionario!</button></a>
 <ul>
-    <li style="float: right; padding-top: 12px">
-        <input type="text" id="myFilter" class="form-control" onkeyup="myFunctionCateg()" placeholder="Procure pela categoria">
-        <input type="text" id="myFilterPrec" class="form-control" onkeyup="myFunctionPrec()" placeholder="Procure por preço">
+    <li style="float: right; padding-top: 12px" class="buttons">
+        <input type="text" id="myFilter" class="searchBar" onkeyup="myFunctionCateg()" placeholder="Procure pelo tipo">
+        <input type="text" id="myFilterPrec" class="searchBar" onkeyup="myFunctionPrec()" placeholder="Procure por preço">
     </li>
 </ul>
 <?php
@@ -70,13 +68,14 @@ if($result != null){
     while($row = mysqli_fetch_array($result)){
             echo "<form action=\"\" method=\"POST\">";
             echo "<div class=\"column\">";
-            $potionId = $row['id'];
+            @$potionId = $row['id'];
+            echo "<input type=\"hidden\" value=\"$potionId\" name=\"potionId\">";
             echo "<div class=\"card\">";
             echo "<div class=\"upper-line\">";
             echo "</div>";
             echo "<div class=\"container\">";
             echo "<h4><b><span>Nome:</span> ".$row['nome']."</b></h4>";
-            echo "<p> <span>Preco:</span> ".$row['preco']."</p>";
+            echo "<p class=\"cardPrice\"> <span>Preco:</span> ".$row['preco']."</p>";
 
             @$tipoId = $row['tipo'];
             @$getTipoNome = mysqli_query($con, "SELECT nome FROM tipo WHERE id = $tipoId");
@@ -92,8 +91,10 @@ if($result != null){
                 @$userIsAdmin = @$resultUserAdmin['isAdm'];
             }
             if($userIsAdmin == 1){
-                echo "<button type=\"submit\" name=\"botao\" value=\"deletar poção\" class=\"button\">deletar poção</button>";
+                echo "<div class=\"buttons\">";
+                echo "<a><button type=\"submit\" name=\"botao\" value=\"deletar poção\" class=\"button\">deletar poção</button></a>";
                 echo "<a><button type=\"submit\" name=\"botao\" value=\"gerenciar potion\" class=\"button\">gerenciar poção</button></a>";
+                echo "</div>";
             }
             echo "</div>";
             echo "</div>";
@@ -107,24 +108,21 @@ if($result != null){
 }
 
 if(@$_REQUEST['botao'] == "deletar poção"){
-    @$potionToDelete = $_POST["potionId"];
+    @$potionToDelete = $_POST['potionId'];
     
     $deletePotion = "DELETE FROM potion WHERE id = $potionToDelete";
-    $result = mysqli_query($con, $deletePotion);
-    if ($result){
-      echo @$potionToDelete;
+    if (mysqli_query($con, $deletePotion)){
       echo "Poção deletada com sucesso.";
-      header("Refresh: 3");
+      //header("Refresh:3");
     } else {
-      echo @$potionToDelete;
       echo "Erro ao deletar poção.";
-      header("Refresh: 3");
+      //header("Refresh:3");
     }
 }
 
 if(@$_REQUEST['botao'] == "gerenciar potion"){
-    @$postToUpdate = $_POST["potionId"];
-    echo "<script>top.location.href=\"update_post.php?id=$postToUpdate\"</script>";
+    @$potionToUpdate = $_POST['potionId'];
+    echo "<script>top.location.href=\"update_potion.php?id=$potionToUpdate\"</script>";
 }
 ?>
 </body>
