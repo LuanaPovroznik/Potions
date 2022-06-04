@@ -4,7 +4,7 @@
     <?php include ('config.php'); 
     include 'navigation_bar.php';
     include 'host.php'; ?>
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/register_style.css" rel="stylesheet">
 </head>
     <body>
     <?php
@@ -27,9 +27,8 @@
             }
     }
     ?>
-    <h2 style="text-align: center"><span>Potions</span></h2>
 <div class="container">
-    <h2>Cadastro <span>de Cliente</span></h2>
+    <h2>Cadastre<span>-se</span></h2>
     <form action="register_cliente.php" method="post" name="user" enctype="multipart/form-data">
         <input type="text" placeholder="Username" onkeyup="checkUser('<?php echo $localUrl; ?>')" name="login" id= "login" value="<?php echo @$_POST['login']; ?>" required>
         <script>
@@ -47,7 +46,7 @@
                     });
             }
         </script>
-        <p id="result"></p>
+        <p id="result" style="font-style: italic; font-size: small"></p>
         <input type="text" placeholder="Nome" name="nome" value="<?php echo @$_POST['nome']; ?>" required><br>
         <input type="text" onfocusout="CalculaCPF('<?php echo $localUrl; ?>')" placeholder="CPF" name="cpf" id="cpf" value="<?php echo @$_POST['cpf']; ?>" required><br>
         <script>
@@ -66,10 +65,24 @@
                     });
             }
         </script>
-        <p id="result_cpf"></p>
+        <p id="result_cpf" style="font-style: italic; font-size: small"></p>
         <input type="password" id="password" name="password" value="<?php echo @$_POST['password']; ?>" placeholder="Senha" required><br>
-        <input type="file" name="avatar" id="avatar" accept="image/jpg, image/jpeg, image/png">
+        <br>
+        <label for="avatar" class="avatarButton" id="avatarUpload">
+            Escolha seu avatar
+        </label>
+        <input id="avatar" type="file" accept="image/jpg, image/jpeg, image/png" style="display: none"/>
         <script>
+            const fileInput = document.getElementById('avatar');
+
+            fileInput.onchange = function(e){
+                if(e.target.files.length > 0){
+                    document.getElementById('avatarUpload').style.backgroundColor = 'purple';
+                    document.getElementById('avatarUpload').innerText = "Enviado. Selecionar outro...";
+                    document.getElementById('avatarUpload').style.color = 'white';
+                }
+            }
+
             function letRegister(){
                 userAvaiable = document.getElementById("result").innerHTML.valueOf();
                 if(userAvaiable == "Esse login já existe em nosso sistema."){
@@ -91,9 +104,9 @@
                     }
                 }
         </script>
-        <input type="submit" value="Gravar" name="submit" id="addButton" class="button">
+        <br><br><input type="submit" value="Gravar" name="submit" id="addButton" class="saveButton">
         <a href="login_cliente.php">
-            <button type="button" class="button">Já tenho uma conta</button>
+            <button type="button" class="loginButton">Já tenho uma conta</button>
         </a>
     <input type="hidden" name="id" value="<?php echo @$_REQUEST['id'] ?>">
 

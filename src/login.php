@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Login</title>
-		<link href="css/style.css" rel="stylesheet">
+		<link href="css/login_style.css" rel="stylesheet">
 	</head>
 	<?php
 	include ('config.php');
@@ -36,13 +36,12 @@
 	?>
 
 	<body>
-	<h2 style="text-align: center"><span>Potions</span></h2>
 		<div class="container">
 			<h1>Seja <span>bem vindo</span></h1>
 			<form class="user" action=# method=post>
-				<input type="text" aria-describedby="emailHelp" placeholder="Enter username" name="login"><br><br>
-				<input type="password" id="password" placeholder="Password" name="password"> <br><br>
-				<input type="submit" name="button" value="Login" class="button"><br>
+				<input type="text" aria-describedby="emailHelp" placeholder="Nome de usuário" name="login"><br><br>
+				<input type="password" id="password" placeholder="Senha" name="password"> <br><br>
+				<input type="submit" name="button" value="Login" class="loginButton" style="margin-left: 170px;"><br>
 			</form>
 		</div>
 	</body>

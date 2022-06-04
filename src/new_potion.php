@@ -10,24 +10,23 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/register_style.css">
         <title>Cadastrar Nova Poção</title>
     </head>
     <body>
         <div class="container">
             <div class="form">
                 <form action="new_potion.php" method="POST" name="newPotionForm" id="newPotionForm">
-                    <p>Cadastrar Nova Poção</p>
-                    <label for="potionName">Nome:</label><br>
-                    <input type="text" name="potionName"><br><br>
-                    <label for="potionPrice">Preço:</label><br>
-                    <input type="float" name="potionPrice"><br><br>
-                    <label for="potionType">Tipo da poção:</label><br>
+                    <h2>Cadastrar nova<span> poção</span></h2>
+                    <input type="text" name="potionName" placeholder="Nome"><br><br>
+                    <input type="float" name="potionPrice" placeholder="Preço"><br><br>
+                    <label for="potionType" style="margin-right: 150px;"><span>Tipo da poção</span></label><br>
                     <?php
                     $sqlGet = "SELECT nome FROM tipo ORDER BY nome ASC";
                     $resultGet = mysqli_query($con, $sqlGet);
                     echo '<select name="potionType" id="potionType">';
                     while($row = mysqli_fetch_array($resultGet)){
-                        echo "<option value='{$row['nome']}'>" . $row['nome'] . "</option>";
+                        echo "<option style='color: grey' value='{$row['nome']}'>" . $row['nome'] . "</option>";
                     }
                     echo '</select>';
                     ?>

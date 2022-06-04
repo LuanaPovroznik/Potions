@@ -10,20 +10,19 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/register_style.css">
     <title>Cadastrar Novo Funcionário</title>
 </head>
     <body>
         <div class="container">
             <div class="form">
                 <form action="new_employee.php" method="POST" name="newEmployeeForm" id="newEmployeeForm">
-                    <p>Cadastrar Novo Funcionário</p>
-                    <label for="employeeName">Nome:</label><br>
-                    <input type="text" name="employeeName"><br><br>
-                    <label for="employeeLevel">Permissão de administrador:</label><br>
-                    <input type="radio" name="employeeLevel" value="Sim"> Sim<br>
-                    <input type="radio" name="employeeLevel" value="Não"> Não<br><br>
-                    <label for="employeeCPF">CPF <span style="font-style: italic">(apenas números)</span>:</label><br>
-                    <input type="text" name="employeeCPF" onfocusout="checkCPF('<?php echo $localUrl; ?>')" id="employeeCPF"><br>
+                    <h2>Cadastrar No<span>vo Funcionário</span></h2>
+                    <input type="text" name="employeeName" placeholder="Nome"><br><br>
+                    <label for="employeeLevel" style="margin-right: 50px;"><span style="color: grey">Permissão de administrador:</span></label><br>
+                    <input type="radio" name="employeeLevel" value="Sim"> <span>Sim</span>
+                    <input type="radio" name="employeeLevel" value="Não"> <span>Não</span><br>
+                    <input type="text" placeholder="CPF" name="employeeCPF" onfocusout="checkCPF('<?php echo $localUrl; ?>')" id="employeeCPF"><br>
                     <script>
                         function checkCPF(url){
                             fetch(`${url}/api/check_cpf.php`, {
@@ -52,11 +51,9 @@
                             }
                         }
                     </script>
-                    <label for="employeeLogin">Login:</label><br>
-                    <input type="text" name="employeeLogin"><br><br>
-                    <label for="employeePassword">Senha:</label><br>
-                    <input type="password" name="employeePassword"><br><br>
-                    <input type="submit" name="addButton" value="Cadastrar" id="addButton">
+                    <input type="text" name="employeeLogin" placeholder="Nome de usuário"><br><br>
+                    <input type="password" name="employeePassword" placeholder="Senha"><br><br>
+                    <input type="submit" name="addButton" value="Cadastrar" id="addButton" class="saveButton">
                 </form>
             </div>
         </div>

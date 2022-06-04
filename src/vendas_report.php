@@ -2,6 +2,7 @@
 <head>
     <title>Relatório de Vendas</title>
     <link rel="stylesheet" href="css/report_buttons.css">
+    <link rel="stylesheet" href="css/search_bar_style.css">
     <?php include ('config.php'); 
     include 'logged_user_nav_bar.php';
     include 'host.php';
@@ -77,9 +78,9 @@
          type="text" 
          id="myInput" 
          onkeyup="myFunction()" 
-         placeholder="Procure pela venda" 
+         placeholder="&#128269 Procure pela data, produto, cliente ou total"
          title="Filtra a tabela"
-         style="width: 50%; margin-left: 25%; margin-top: 5px">
+         class="searchBar">
         <table id="myTable" style="width: 100%; align-content: center; justify-content: center; text-align: center">
             <thead>
                 <th onclick="sortTable(0)">Data  &#8645</th>
@@ -147,7 +148,7 @@
                 echo " | <a href=\"?pagina=$posterior\" style='text-decoration: none; color: rebeccapurple'> &#10145 </a> | ";
                 echo "  <a href=\"?pagina=$totalPagina\" style='text-decoration: none; color: rebeccapurple'>última</a>";
                 ?>
-            </div>
+            </div><br>
         </table>
         <form action="#" method="POST" style="width: 97%; align-content: center; justify-content: center">
             <a href="vendas.txt" download><button value="Exportar arquivo" name="botao" class="exportButton" style="float: right; margin: 10px">Exportar arquivo</button></a>

@@ -2,6 +2,7 @@
 <head>
     <title>Relatório de Produtos Cadastrados</title>
     <link rel="stylesheet" href="css/report_buttons.css">
+    <link rel="stylesheet" href="css/search_bar_style.css">
     <?php include ('config.php'); 
     include 'logged_user_nav_bar.php';
     include 'host.php'; ?>
@@ -68,8 +69,8 @@
             fclose($myfile); 
         }
         ?>
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Procure por nome, preço e tipo"
-         title="Filtra a tabela" style="width: 50%; margin-left: 25%; margin-top: 5px">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="&#128269 Procure por nome, preço ou tipo"
+         title="Filtra a tabela" class="searchBar">
         
         <div>
             <table id="myTable" style="width: 100%; align-content: center; justify-content: center; text-align: center">
@@ -130,7 +131,7 @@
                     echo " | <a href=\"?pagina=$posterior\" style='text-decoration: none; color: rebeccapurple'> &#10145 </a> | ";
                     echo "  <a href=\"?pagina=$totalPagina\" style='text-decoration: none; color: rebeccapurple'>última</a>";
                     ?>
-                </div>
+                </div><br>
             </table>
         </div>
         <form action="#" method="POST" style="width: 97%; align-content: center; justify-content: center"><br>

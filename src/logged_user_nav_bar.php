@@ -12,6 +12,14 @@
         echo "<li><p><span>LEAKY</span> CAULDRON</p></li>";
         echo "<li style=\"float: right\"><a href=\"logout.php\">Sair</a></li>";
         echo "<li class=\"dropdown\" style=\"float: right\">";
+        echo "<a href=\"javascript:void(0)\" class=\"dropbtn\">Funcionários</a>";
+        echo "<div class=\"dropdown-content\">";
+        if($_SESSION['isAdm'] == 1){
+            echo "<a href=\"new_employee.php\">Adicionar novo</a>";
+        }
+        echo "</div>";
+        echo "</li>";
+        echo "<li class=\"dropdown\" style=\"float: right\">";
         echo "<a href=\"javascript:void(0)\" class=\"dropbtn\">Poções</a>";
         echo "<div class=\"dropdown-content\">";
         if($_SESSION['isAdm'] == 1){
@@ -33,7 +41,7 @@
         }
         echo "</div>";
         echo "</li>";
-        echo "<li style=\"float: right\"><a href=\"index.php\">Inicial</a></li>";
+        echo "<li style=\"float: right\"><a href=\"logged_index.php\">Inicial</a></li>";
         echo "</div>";
         echo "</ol>";
 ?>

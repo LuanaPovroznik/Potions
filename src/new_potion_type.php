@@ -10,18 +10,17 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/register_style.css">
         <title>Cadastrar Novo Tipo</title>
     </head>
     <body>
     <div class="container">
         <div class="form">
             <form action="new_potion_type.php" method="POST" name="newPotionTypeForm" id="newPotionTypeForm">
-                <p>Cadastrar Nova Poção</p>
-                <label for="potionTypeName">Nome:</label><br>
-                <input type="text" name="potionTypeName"><br><br>
-                <label for="potionTypeEffect">Efeito da Poção:</label><br>
-                <textarea id="potionTypeEffect" name="potionTypeEffect"></textarea><br><br>
-                <input type="submit" name="addButton" value="Cadastrar">
+                <h2>Cadastrar novo<span> tipo de poção</span></h2>
+                <input type="text" name="potionTypeName" placeholder="Nome"><br><br>
+                <textarea id="potionTypeEffect" name="potionTypeEffect" placeholder="Efeito da poção"></textarea><br><br>
+                <input type="submit" name="addButton" value="Cadastrar" class="saveButton">
             </form>
         </div>
     </div>
