@@ -18,18 +18,20 @@
         }
         function headerTable(){
             $this->SetFont('Times', 'B', 12);
+            $this->Cell(30,10,'',0,0,'C');
             $this->Cell(80,10,'Nome',1,0,'C');
             $this->Cell(60,10,'Login',1,0,'C');
-            $this->Cell(60,10,'CPF',1,0,'C');
+            $this->Cell(80,10,'CPF',1,0,'C');
             $this->Ln();
         }
         function viewTable($db){
             $this->SetFont('Times', '',12);
             $stmt = $db->query('SELECT nome, login, cpf FROM cliente');
             while($cliente = $stmt->fetch(PDO::FETCH_OBJ)){
+                $this->Cell(30,10,'',0,0,'C');
                 $this->Cell(80,10,$cliente->nome,1,0,'C');
                 $this->Cell(60,10,$cliente->login,1,0,'C');
-                $this->Cell(60,10,$cliente->cpf,1,0,'C');
+                $this->Cell(80,10,$cliente->cpf,1,0,'C');
                 $this->Ln();
             }
         }
