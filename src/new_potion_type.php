@@ -14,12 +14,12 @@
     </head>
     <body>
     <div class="container">
-        <div class="form">
+        <div class="form" style="align-content: center; justify-content: center; text-align: center">
             <form action="new_potion_type.php" method="POST" name="newPotionTypeForm" id="newPotionTypeForm">
                 <h2>Cadastrar novo<span> tipo de poção</span></h2>
                 <input type="text" name="potionTypeName" placeholder="Nome"><br><br>
                 <textarea id="potionTypeEffect" name="potionTypeEffect" placeholder="Efeito da poção"></textarea><br><br>
-                <input type="submit" name="addButton" value="Cadastrar" class="saveButton">
+                <input type="submit" name="addButton" value="Cadastrar" class="saveButton" style="margin-left: 120px">
             </form>
         </div>
     </div>

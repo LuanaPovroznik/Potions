@@ -30,7 +30,7 @@
                     echo '</select>';
                     ?>
                     <br><br>
-                    <input type="submit" name="addButton" value="Cadastrar">
+                    <input type="submit" name="addButton" value="Cadastrar" class="saveButton" style="margin-left: 120px">
                 </form>
             </div>
         </div>

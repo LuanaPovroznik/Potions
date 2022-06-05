@@ -28,8 +28,32 @@
                 echo "<div class=\"upper-line\">";
                 echo "</div>";
                 echo "<div class=\"container\">";
-                echo '<img class="size" style=" max-width:80px;  border-radius: 20px 2px;" src="uploaded_img/'.$data['avatar'].'">';
-                echo '<input type="file" name="avatar" id="avatar" accept="image/jpg, image/jpeg, image/png">';
+                if($data['avatar'] != null){
+                    echo '<img class="userAvatar" src="uploaded_img/'.$data['avatar'].'" id="myImg"><br><br>';
+                } else {
+                    echo '<img class="userAvatar" src="img/no-image.png" id="myImg"><br><br>';
+                }
+                echo '<label for="avatar" class="avatarButton" id="avatarUpload" name="avatar"> Escolha seu avatar </label>';
+                echo '<input name="avatar" id="avatar" type="file" accept="image/jpg, image/jpeg, image/png" style="display: none"/>';
+                echo '<script>
+                        const fileInput = document.getElementById(\'avatar\');
+
+                            fileInput.onchange = function(e){
+                                if(e.target.files.length > 0){
+                                    document.getElementById(\'avatarUpload\').style.backgroundColor = \'purple\';
+                                    document.getElementById(\'avatarUpload\').innerText = "Atualizando...";
+                                    document.getElementById(\'avatarUpload\').style.color = \'white\';
+                                    document.getElementById("myImg").src = "./img/loading.gif";
+                                    setInterval(function () {
+                                        document.getElementById("myImg").style.height = "150px";
+                                        document.getElementById("myImg").src = "./img/check.png";
+                                        document.getElementById(\'avatarUpload\').innerText = "Atualizado. Selecionar outro...";
+                                        document.getElementById("myImg").style.backgroundColor = "white";                   
+                                    }, 5000);
+                                }
+                            }
+                       </script>';
+//                echo '<input type="file" name="avatar" id="avatar" accept="image/jpg, image/jpeg, image/png">';
                 $nome =$data['nome'];
                 echo "<h4><b> Nome: <input type=\"text\" name=\"nome\" id=\"inputNome\" maxlength=\"80\" placeholder=\"Digite seu nome\" value=\"$nome\" required></b></h4>";
                 $login =$data['login'];

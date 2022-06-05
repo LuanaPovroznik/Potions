@@ -15,7 +15,7 @@
 </head>
     <body>
         <div class="container">
-            <div class="form">
+            <div class="form" style="text-align: center">
                 <form action="new_employee.php" method="POST" name="newEmployeeForm" id="newEmployeeForm">
                     <h2>Cadastrar No<span>vo Funcionário</span></h2>
                     <input type="text" name="employeeName" placeholder="Nome"><br><br>
@@ -53,7 +53,7 @@
                     </script>
                     <input type="text" name="employeeLogin" placeholder="Nome de usuário"><br><br>
                     <input type="password" name="employeePassword" placeholder="Senha"><br><br>
-                    <input type="submit" name="addButton" value="Cadastrar" id="addButton" class="saveButton">
+                    <input type="submit" name="addButton" value="Cadastrar" id="addButton" class="saveButton" style="margin-left: 120px">
                 </form>
             </div>
         </div>

@@ -73,6 +73,12 @@ span {
     background-color: pink;	
 }
 
+.button:hover{
+    cursor: pointer;
+    background-color: hotpink;
+    color: white;
+}
+
 ul {
     list-style-type: none;
     margin: 0;

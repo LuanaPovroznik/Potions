@@ -15,13 +15,20 @@
 		
 		$query = "SELECT * FROM cliente WHERE login = '$login' AND password = '$password' ";
 		$result = mysqli_query($con, $query);
-		while ($coluna=mysqli_fetch_array($result)) 
-		{
-			$_SESSION["id"]= $coluna["id"]; 
-			$_SESSION["login"] = $coluna["login"]; 
-			header("Location: menu.php"); 
-		}
-		
+
+        if(mysqli_num_rows($result) > 0){
+            while ($coluna=mysqli_fetch_array($result))
+            {
+                $_SESSION["id"]= $coluna["id"];
+                $_SESSION["login"] = $coluna["login"];
+                header("Location: menu.php");
+            }
+        } else {
+            echo '<script>
+                    alert("Usuário e/ou senha incorretos. Por favor, tente novamente.");
+                    header("Location: login_cliente.php");
+                  </script>';
+        }
 	}
 	?>
 

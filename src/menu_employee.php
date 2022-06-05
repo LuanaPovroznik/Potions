@@ -93,7 +93,7 @@ if($result != null){
             if($userIsAdmin == 1){
                 echo "<div class=\"buttons\">";
                 echo "<a><button type=\"submit\" name=\"botao\" value=\"deletar poção\" class=\"button\">deletar poção</button></a>";
-                echo "<a><button type=\"submit\" name=\"botao\" value=\"gerenciar potion\" class=\"button\">gerenciar poção</button></a>";
+                echo "<a><button type=\"submit\" name=\"botao\" value=\"gerenciar potion\" class=\"button\">editar poção</button></a>";
                 echo "</div>";
             }
             echo "</div>";

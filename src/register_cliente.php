@@ -15,7 +15,11 @@
         $image_size = $_FILES['avatar']['size'];
         $image_tmp_name = $_FILES['avatar']['tmp_name'];
         $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-        $new_name = $_POST['nome'].'.'.$extension;       
+        if($extension != null){
+            $new_name = $_POST['login'].'.'.$extension;
+        } else {
+            $new_name = null;
+        }
         $image_folder = "uploaded_img/".$new_name;
         if (!$_REQUEST['id']){
             $insere = "INSERT into cliente (nome, login, password, cpf, avatar) VALUES ('{$_POST['nome']}', '{$_POST['login']}', '$password',  '{$_POST['cpf']}', '$new_name')";
@@ -68,10 +72,10 @@
         <p id="result_cpf" style="font-style: italic; font-size: small"></p>
         <input type="password" id="password" name="password" value="<?php echo @$_POST['password']; ?>" placeholder="Senha" required><br>
         <br>
-        <label for="avatar" class="avatarButton" id="avatarUpload">
+        <label for="avatar" class="avatarButton" id="avatarUpload" name="avatar">
             Escolha seu avatar
         </label>
-        <input id="avatar" type="file" accept="image/jpg, image/jpeg, image/png" style="display: none"/>
+        <input name="avatar" id="avatar" type="file" accept="image/jpg, image/jpeg, image/png" style="display: none"/>
         <script>
             const fileInput = document.getElementById('avatar');
 

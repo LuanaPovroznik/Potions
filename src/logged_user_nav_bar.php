@@ -47,6 +47,7 @@
             echo "<a href=\"new_potion_type.php\">Cadastrar novo tipo de poção</a>";
         } else if (mysqli_num_rows($result2) > 0){
             echo "<a href=\"menu_employee.php\">Visualizar poções</a>";
+            echo "<a href=\"new_potion.php\">Cadastrar nova poção</a>";
         } else {
             echo "<a href=\"menu.php\">Comprar poções</a>";
         }

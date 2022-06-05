@@ -15,22 +15,31 @@
 		
 		$query = "SELECT * FROM funcionario WHERE login = '$login' AND password = '$password' ";
 		$result = mysqli_query($con, $query);
-		while ($coluna=mysqli_fetch_array($result)) 
-		{
-			$_SESSION["id"]= $coluna["id"]; 
-			$_SESSION["login"] = $coluna["login"]; 
-			$_SESSION["isAdm"] = $coluna["isAdm"];
 
-			$cargo = $coluna['isAdm'];
-			if($cargo == "0"){ 
-				header("Location: menu_employee.php"); 
-				exit; 
-			}
-			if($cargo == "1"){ 
-				header("Location: menu_employee.php"); 
-				exit; 
-			}
-		}
+        if(mysqli_num_rows($result) > 0){
+            while ($coluna=mysqli_fetch_array($result)) {
+                $_SESSION["id"]= $coluna["id"];
+                $_SESSION["login"] = $coluna["login"];
+                $_SESSION["isAdm"] = $coluna["isAdm"];
+
+                $cargo = $coluna['isAdm'];
+                if($cargo == "0"){
+                    header("Location: menu_employee.php");
+                    exit;
+                }
+                if($cargo == "1"){
+                    header("Location: menu_employee.php");
+                    exit;
+                }
+            }
+        } else {
+            echo '<script>
+                    alert("Usuário e/ou senha incorretos. Por favor, tente novamente.");
+                    header("Location: login.php");
+                  </script>';
+        }
+
+
 		
 	}
 	?>

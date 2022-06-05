@@ -21,11 +21,13 @@
             $potionId = $data['id'];
             echo "<input type=\"hidden\" value=\"$potionId\" name=\"potionId\">";
             $nome =$data['nome'];
-            echo "<h4><b> Nome: <input type=\"text\" name=\"nomePotion\" id=\"inputNome\" maxlength=\"60\" value=\"$nome\"></b></h4>";
+            echo "<br><label for='nomePotion' style=\"margin-right: 258px;\"><span>Nome</span></label><br>";
+            echo "<input type=\"text\" name=\"nomePotion\" id=\"inputNome\" maxlength=\"60\" value=\"$nome\"><br><br>";
             $preco =$data['preco'];
-            echo "<p> <span>Preço:</span> <input type=\"text\" name=\"preco\" id=\"preco\" maxlength=\"60\" value=\"$preco\"></p>";
+            echo "<labeL for='preco' style=\"margin-right: 258px;\"><span>Preço</span></labeL><br>";
+            echo "<input type=\"text\" name=\"preco\" id=\"preco\" maxlength=\"60\" value=\"$preco\"><br><br>";
             @$tipoId = $row['tipo'];
-            echo '<label for="potionType" style="margin-right: 150px;"><span>Tipo da poção</span></label><br>';
+            echo '<label for="potionType" style="margin-right: 200px;"><span>Tipo da poção</span></label><br>';
             $sqlGet = "SELECT nome FROM tipo ORDER BY nome ASC";
             $resultGet = mysqli_query($con, $sqlGet);
             echo '<select name="potionType" id="potionType">';
@@ -34,15 +36,15 @@
             }
             echo '</select>';
             echo '<br><br>';
-            echo "<input type=\"submit\" name=\"botao\" id=\"update\" value=\"Update\" class=\"loginButton\"><br> ";
+            echo "<input type=\"submit\" name=\"botao\" id=\"update\" value=\"Salvar\" class=\"loginButton\" style='margin-left: 130px'><br> ";
             echo "</form>";
             echo "</div>";
         } else {
-            echo "There is no post.";
+            echo "There is no potion.";
             header("Refresh:7");
         }
 
-if(@$_REQUEST['botao'] == "Update"){
+if(@$_REQUEST['botao'] == "Salvar"){
     @$potionType = $_POST["potionType"];
 
     @$getPotionTypeId = mysqli_query($con, "SELECT id FROM tipo WHERE nome = '".@$potionType."'");
