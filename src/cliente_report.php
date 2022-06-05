@@ -3,9 +3,32 @@
     <title>Relatório de Clientes Cadastrados</title>
     <link rel="stylesheet" href="css/report_buttons.css">
     <link rel="stylesheet" href="css/search_bar_style.css">
-    <?php include ('config.php'); 
-    include 'logged_user_nav_bar.php';
-    include 'host.php'; ?>
+    <?php
+        include ('config.php');
+        include 'logged_user_nav_bar.php';
+        include 'host.php';
+
+        @$url_id = mysqli_real_escape_string($con, $_SESSION['login']);
+        $sql = "SELECT login FROM cliente WHERE login = '{$url_id}'";
+        $result = mysqli_query($con, $sql);
+
+        $sql2 = "SELECT login FROM funcionario WHERE login = '{$url_id}'";
+        $result2 = mysqli_query($con, $sql2);
+
+        if(mysqli_num_rows($result) > 0){
+            header("Location: logged_index.php");
+            exit;
+        }
+
+        if(mysqli_num_rows($result2) > 0){
+            if (@$_SESSION['isAdm'] == 0){
+                header("Location: logged_index.php");
+                exit;
+            }
+        }
+
+
+    ?>
 </head>
 <style>
     table {
