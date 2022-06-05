@@ -62,7 +62,7 @@
                 echo "<h4><b> Senha: <input type=\"password\" name=\"password\" id=\"password\" maxlength=\"80\" required></b></h4>";
                 $cpf =$data['cpf'];
                 echo "<h4><b> CPF: <input type=\"text\" name=\"cpf\" id=\"inputCPF\" maxlength=\"80\" placeholder=\"$cpf\" value=\"$cpf\" disabled></b></h4>";
-                echo "<input type=\"submit\" name=\"botao\" id=\"update\" value=\"Update\" class=\"loginButton\"><br> ";
+                echo "<input type=\"submit\" name=\"botao\" id=\"update\" value=\"Salvar\" class=\"loginButton\"><br> ";
                 echo "</div>";
                 echo "</div>";
                 echo "</div>";
@@ -75,7 +75,7 @@
                 header("Refresh:7");
             }
     
-    if(@$_REQUEST['botao'] == "Update"){
+    if(@$_REQUEST['botao'] == "Salvar"){
         $password = md5($_POST['password']);  
         if($_FILES['avatar']['name'] != ''){
             $image_name = $_FILES['avatar']['name'];
