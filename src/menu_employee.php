@@ -2,6 +2,15 @@
 <?php
     include 'config.php';
     include 'logged_user_nav_bar.php';
+
+    @$url_id = mysqli_real_escape_string($con, $_SESSION['login']);
+    $sql = "SELECT login FROM cliente WHERE login = '{$url_id}'";
+    $result = mysqli_query($con, $sql);
+
+    if(mysqli_num_rows($result) > 0){
+        header("Location: logged_index.php");
+        exit;
+    }
 ?>
 <html lang="pt-BR">
 <head>

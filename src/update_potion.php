@@ -8,6 +8,17 @@
     include 'logged_user_nav_bar.php';
     @$userLogin = $_SESSION['login'];
     @$userId = $_SESSION['id'];
+
+    @$url_id = mysqli_real_escape_string($con, $_SESSION['login']);
+    $sql = "SELECT login FROM cliente WHERE login = '{$url_id}'";
+    $result = mysqli_query($con, $sql);
+
+    if(mysqli_num_rows($result) > 0){
+        header("Location: logged_index.php");
+        exit;
+    }
+
+
     @$potionId = $_GET['id'];
 
     $sql = "SELECT * FROM potion WHERE id = $potionId";
