@@ -2,6 +2,14 @@
 <?php
 include 'config.php';
 include 'logged_user_nav_bar.php';
+
+$sql2 = "SELECT login FROM funcionario WHERE login = '{$url_id}'";
+$result2 = mysqli_query($con, $sql2);
+
+if(mysqli_num_rows($result2) > 0){
+    header("Location: logged_index.php");
+    exit;
+}
 ?>
 <html lang="pt-BR">
 <head>
