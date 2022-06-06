@@ -1,10 +1,7 @@
-Sucy Speciality 200.00 Health Potion 
-Orc errante 100.00 Health Potion 
-O grito do Elfo 500.00 Mana potion 
-Nunca mais vazio 50.00 Mana potion 
-Exprojion 10000.00 Explosiva 
-Sucy Speciality 200.00 Health Potion 
-Orc errante 100.00 Health Potion 
-O grito do Elfo 500.00 Mana potion 
-Nunca mais vazio 50.00 Mana potion 
-Exprojion 10000.00 Explosiva 
+Heal Yourself 25,50 Health Potion 
+Heal Yourself 25,50 Health Potion 
+Heal Yourself 25,50 Health Potion 
+Heal Yourself 25,50 Health Potion 
+Heal Yourself 25,50 Health Potion 
+Heal Yourself 25,50 Health Potion 
+Heal Yourself 25,50 Health Potion 

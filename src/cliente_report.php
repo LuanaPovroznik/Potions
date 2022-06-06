@@ -148,8 +148,8 @@
                 ?>
             </div><br>
         </table>
-        <form action="#" method="POST" style="width: 97%; align-content: center; justify-content: center">
-            <a href="vendas.txt" download><button value="Exportar arquivo" name="botao" class="exportButton" style="float: right; margin: 10px">Exportar arquivo</button></a>
+        <form action="#" method="POST" style="width: 97%; align-content: center; justify-content: center"><br>
+            <button value="Exportar arquivo" name="botao" class="exportButton" style="float: right; margin: 10px"><a href="./relatorios/clientes.txt" download style="text-decoration: none; color: white">Exportar arquivo</a></button>
             <a href="cliente_pdf.php" target="_blank"><input type="button" value="Imprimir" class="printButton" style="float: right; margin: 10px"/>
         </form>
         <script>
