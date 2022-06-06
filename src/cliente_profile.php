@@ -91,7 +91,11 @@
             $image_size = $_FILES['avatar']['size'];
             $image_tmp_name = $_FILES['avatar']['tmp_name'];
             $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-            $new_name = $_POST['nome'].'.'.$extension;       
+            if($extension != null){
+            $new_name = $_POST['login'].'.'.$extension;
+            } else {
+                $new_name = null;
+            }       
             $image_folder = "uploaded_img/".$new_name;
             $insere = "UPDATE cliente SET 
              nome = '{$_POST['nome']}'
